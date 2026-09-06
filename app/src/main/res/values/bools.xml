@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <bool name="default_haptic_enabled">true</bool>
+    <bool name="default_sound_enabled">true</bool>
+    <bool name="default_cloud_sync_enabled">false</bool>
+</resources>

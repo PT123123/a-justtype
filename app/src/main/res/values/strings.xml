@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Shell Keyboard</string>
+    <string name="settings_title">Shell Keyboard Settings</string>
+    <string name="subtype_zh_cn">Chinese</string>
+    <string name="subtype_en">English</string>
+    <string name="ime_label">Shell Keyboard</string>
+    <string name="ime_settings_description">Tap to configure Shell Keyboard</string>
+</resources>

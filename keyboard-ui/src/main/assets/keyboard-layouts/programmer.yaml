@@ -1,0 +1,52 @@
+name: programmer
+version: "1.0"
+description: "Programmer-friendly keyboard with common coding symbols"
+rows:
+  - - label: "{"
+      code: 123
+    - label: "}"
+      code: 125
+    - label: "["
+      code: 91
+    - label: "]"
+      code: 93
+    - label: "("
+      code: 40
+    - label: ")"
+      code: 41
+    - label: "<"
+      code: 60
+    - label: ">"
+      code: 62
+  - - label: "="
+      code: 61
+    - label: "!"
+      code: 33
+    - label: "&"
+      code: 38
+    - label: "|"
+      code: 124
+    - label: "+"
+      code: 43
+    - label: "-"
+      code: 45
+    - label: "*"
+      code: 42
+    - label: "/"
+      code: 47
+  - - label: ";"
+      code: 59
+    - label: ":"
+      code: 58
+    - label: "\""
+      code: 34
+    - label: "'"
+      code: 39
+    - label: "\\"
+      code: 92
+    - label: "~"
+      code: 126
+    - label: "`"
+      code: 96
+    - label: "#"
+      code: 35

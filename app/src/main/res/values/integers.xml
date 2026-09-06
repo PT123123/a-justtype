@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="keyboard_default_height_ratio">80</integer>
+    <integer name="candidate_page_size">5</integer>
+    <integer name="long_press_timeout">500</integer>
+    <integer name="repeat_interval">50</integer>
+</resources>

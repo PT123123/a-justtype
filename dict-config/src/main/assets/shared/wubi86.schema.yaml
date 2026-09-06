@@ -1,0 +1,38 @@
+# RIME schema: wubi86 (五笔86版)
+# Wubi 86 version input schema
+
+schema:
+  schema_id: wubi86
+  name: 五笔86
+  version: "0.1"
+  author:
+    - 王永民
+  description: |
+    五笔86版输入法。
+    基于五笔字型输入法86版编码。
+
+translator:
+  dictionary: wubi86
+  enable_charset_filter: true
+  enable_sentence: true
+  enable_user_dict: true
+  encode_commit: true
+  max_phrase_length: 4
+  disable_user_dict_for_patterns:
+    - "^z.*$"
+
+reverse_lookup:
+  dictionary: pinyin_simp
+  enable_completion: true
+  prefix: "`"
+  suffix: "'"
+  tips: 〔拼音〕
+
+punctuator:
+  import_preset: default
+
+key_binder:
+  import_preset: default
+
+recognizer:
+  import_preset: default

@@ -1,0 +1,6 @@
+# Android SDK location
+# Set your Android SDK path here
+# sdk.dir=/path/to/android/sdk
+
+# NDK location (for RIME native build)
+# ndk.dir=/path/to/android/ndk
