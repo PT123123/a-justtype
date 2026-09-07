@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <bool name="default_cloud_sync_enabled">false</bool>
+    <bool name="default_haptic_enabled">true</bool>
+    <bool name="default_sound_enabled">true</bool>
+    <color name="candidate_highlight">#FF6750A4</color>
+    <color name="candidate_text">#FF333333</color>
+    <color name="key_background">#FFFFFFFF</color>
+    <color name="key_pressed">#FF6750A4</color>
+    <color name="key_text">#FF333333</color>
+    <color name="keyboard_background">#FFE0E0E0</color>
+    <color name="on_primary">#FFFFFFFF</color>
+    <color name="on_surface">#FFE6E1E5</color>
+    <color name="primary">#FF6750A4</color>
+    <color name="surface">#FF1C1B1F</color>
+    <dimen name="candidate_bar_height">40dp</dimen>
+    <dimen name="candidate_text_size">18sp</dimen>
+    <dimen name="function_key_text_size">16sp</dimen>
+    <dimen name="key_corner_radius">6dp</dimen>
+    <dimen name="key_margin">2dp</dimen>
+    <dimen name="key_text_size">22sp</dimen>
+    <dimen name="keyboard_height">280dp</dimen>
+    <integer name="candidate_page_size">5</integer>
+    <integer name="keyboard_default_height_ratio">80</integer>
+    <integer name="long_press_timeout">500</integer>
+    <integer name="repeat_interval">50</integer>
+    <string name="app_name">Shell Keyboard</string>
+    <string name="ime_label">Shell Keyboard</string>
+    <string name="ime_settings_description">Tap to configure Shell Keyboard</string>
+    <string name="settings_title">Shell Keyboard Settings</string>
+    <string name="subtype_en">English</string>
+    <string name="subtype_zh_cn">Chinese</string>
+    <style name="Theme.ShellKeyboard" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorOnPrimary">@color/on_primary</item>
+        <item name="colorSecondary">@color/primary</item>
+        <item name="colorOnSecondary">@color/on_primary</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+    </style>
+</resources>

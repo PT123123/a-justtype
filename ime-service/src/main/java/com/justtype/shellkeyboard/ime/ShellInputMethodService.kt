@@ -8,6 +8,7 @@ import com.justtype.shellkeyboard.core.Rime
 import com.justtype.shellkeyboard.core.RimeDispatcher
 import com.justtype.shellkeyboard.core.RimeLifecycle
 import com.justtype.shellkeyboard.keyboard.ui.InputView
+import com.justtype.shellkeyboard.keyboard.ui.InputConnectionBridge
 import com.justtype.shellkeyboard.settings.ThemeManager
 
 /**

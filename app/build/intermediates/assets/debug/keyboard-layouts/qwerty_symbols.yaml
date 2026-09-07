@@ -1,0 +1,63 @@
+name: qwerty_symbols
+version: "1.0"
+rows:
+  - - label: "1"
+      code: 49
+    - label: "2"
+      code: 50
+    - label: "3"
+      code: 51
+    - label: "4"
+      code: 52
+    - label: "5"
+      code: 53
+    - label: "6"
+      code: 54
+    - label: "7"
+      code: 55
+    - label: "8"
+      code: 56
+    - label: "9"
+      code: 57
+    - label: "0"
+      code: 48
+  - - label: "!"
+      code: 33
+    - label: "@"
+      code: 64
+    - label: "#"
+      code: 35
+    - label: "$"
+      code: 36
+    - label: "%"
+      code: 37
+    - label: "^"
+      code: 94
+    - label: "&"
+      code: 38
+    - label: "*"
+      code: 42
+    - label: "("
+      code: 40
+    - label: ")"
+      code: 41
+  - - label: "{"
+      code: 123
+    - label: "}"
+      code: 125
+    - label: "["
+      code: 91
+    - label: "]"
+      code: 93
+    - label: "<"
+      code: 60
+    - label: ">"
+      code: 62
+    - label: "="
+      code: 61
+    - label: "+"
+      code: 43
+    - label: "-"
+      code: 45
+    - label: "_"
+      code: 95

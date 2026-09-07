@@ -1,0 +1,19 @@
+R_DEF: Internal format may change without notice
+local
+array theme_entries
+array theme_values
+id settings_container
+layout settings_activity
+string pref_category_feedback
+string pref_category_general
+string pref_category_input
+string pref_category_privacy
+string pref_cloud_sync_summary
+string pref_cloud_sync_title
+string pref_haptic_title
+string pref_keyboard_height_title
+string pref_schema_title
+string pref_sound_title
+string pref_theme_title
+string pref_user_dict_title
+xml preferences

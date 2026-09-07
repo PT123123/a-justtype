@@ -2,7 +2,6 @@ package com.justtype.shellkeyboard.dict
 
 import com.justtype.shellkeyboard.core.Rime
 import com.justtype.shellkeyboard.core.RimeSession
-import android.content.Context
 
 /**
  * Manages RIME input schemas (拼音, 五笔, 双拼, etc.)
@@ -46,5 +45,17 @@ class SchemaManager {
      */
     fun getSchemaName(schemaId: String): String {
         return availableSchemas.find { it.schemaId == schemaId }?.name ?: schemaId
+    }
+
+    /**
+     * Cycle through available schemas.
+     */
+    fun cycleSchema(session: RimeSession?): String? {
+        if (availableSchemas.isEmpty()) return null
+        val currentIndex = availableSchemas.indexOfFirst { it.schemaId == currentSchemaId }
+        val nextIndex = (currentIndex + 1) % availableSchemas.size
+        val nextSchema = availableSchemas[nextIndex]
+        switchSchema(nextSchema.schemaId, session)
+        return nextSchema.schemaId
     }
 }

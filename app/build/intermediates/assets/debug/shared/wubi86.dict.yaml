@@ -1,0 +1,38 @@
+# RIME dictionary: wubi86
+# Wubi 86 version dictionary
+
+---
+name: wubi86
+version: "0.1"
+sort: by_weight
+use_preset_vocabulary: true
+...
+
+# Common words (sample)
+的	r	1000
+一	g	900
+是	j	850
+不	d	800
+了	b	750
+人	w	700
+我	q	650
+在	d	600
+有	e	550
+他	wb	500
+这	p	450
+中	k	400
+大	dd	350
+来	go	300
+上	h	250
+国	l	200
+个	wj	150
+到	gc	100
+说	yu	90
+们	wu	80
+为	yl	70
+子	bb	60
+和	t	50
+你	wq	40
+地	f	30
+出	bm	20
+会	wf	10

@@ -3,7 +3,6 @@ package com.justtype.shellkeyboard.sync
 import android.content.Context
 import android.net.nsd.NsdManager
 import android.net.nsd.NsdServiceInfo
-import android.content.Context
 
 /**
  * mDNS service discovery for finding sync peers on LAN.

@@ -1,0 +1,30 @@
+# RIME schema: double_pinyin (微软双拼)
+# Microsoft double pinyin input schema
+
+schema:
+  schema_id: double_pinyin
+  name: 微软双拼
+  version: "0.1"
+  author:
+    - 佛振 <chen.sst@gmail.com>
+  description: |
+    微软双拼方案。
+    自然码双拼的键位布局。
+
+translator:
+  dictionary: luna_pinyin
+  preedit_format:
+    - xlit/abcdefghijklmnopqrstuvwxyz/abcdefghijklmnopqrstuvwxyz/
+  comment_format:
+    - xform/([nl])v/$1ü/
+    - xform/([nl])ue/$1üe/
+    - xform/([jqxy])v/$1u/
+
+punctuator:
+  import_preset: default
+
+key_binder:
+  import_preset: default
+
+recognizer:
+  import_preset: default

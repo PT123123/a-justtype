@@ -1,0 +1,26 @@
+[
+    {
+        "merged": "com.justtype.shellkeyboard.app-merged_res-49:/xml_method.xml.flat",
+        "source": "com.justtype.shellkeyboard.app-main-51:/xml/method.xml"
+    },
+    {
+        "merged": "com.justtype.shellkeyboard.app-merged_res-49:/mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "com.justtype.shellkeyboard.app-main-51:/mipmap-anydpi-v26/ic_launcher.xml"
+    },
+    {
+        "merged": "com.justtype.shellkeyboard.app-merged_res-49:/xml_backup_rules.xml.flat",
+        "source": "com.justtype.shellkeyboard.app-main-51:/xml/backup_rules.xml"
+    },
+    {
+        "merged": "com.justtype.shellkeyboard.app-merged_res-49:/xml_data_extraction_rules.xml.flat",
+        "source": "com.justtype.shellkeyboard.app-main-51:/xml/data_extraction_rules.xml"
+    },
+    {
+        "merged": "com.justtype.shellkeyboard.app-merged_res-49:/drawable_ic_launcher_foreground.xml.flat",
+        "source": "com.justtype.shellkeyboard.app-main-51:/drawable/ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "com.justtype.shellkeyboard.app-merged_res-49:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "com.justtype.shellkeyboard.app-main-51:/mipmap-anydpi-v26/ic_launcher_round.xml"
+    }
+]

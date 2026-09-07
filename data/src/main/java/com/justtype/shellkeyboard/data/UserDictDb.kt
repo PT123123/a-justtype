@@ -2,7 +2,6 @@ package com.justtype.shellkeyboard.data
 
 import android.content.Context
 import androidx.room.*
-import android.content.Context
 
 /**
  * Room database for user dictionary.
