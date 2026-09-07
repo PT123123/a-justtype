@@ -1,0 +1,25 @@
+name: numpad
+version: "1.0"
+rows:
+  - - label: "7"
+      code: 55
+    - label: "8"
+      code: 56
+    - label: "9"
+      code: 57
+  - - label: "4"
+      code: 52
+    - label: "5"
+      code: 53
+    - label: "6"
+      code: 54
+  - - label: "1"
+      code: 49
+    - label: "2"
+      code: 50
+    - label: "3"
+      code: 51
+  - - label: "0"
+      code: 48
+    - label: "."
+      code: 46

@@ -1,5 +1,7 @@
 package com.justtype.shellkeyboard.candidates
 
+import com.justtype.shellkeyboard.core.RimeSession
+
 /**
  * Handles word association (联想词).
  * 
@@ -10,13 +12,19 @@ class AssociateWord {
 
     private var isAssociating: Boolean = false
     private var associatedWords: List<String> = emptyList()
+    private var session: RimeSession? = null
+
+    fun setSession(session: RimeSession?) {
+        this.session = session
+    }
 
     /**
      * Start association mode with a committed word.
      */
     fun startAssociation(word: String) {
         isAssociating = true
-        // TODO: Query RIME for associated words
+        // Query RIME for associated words
+        associatedWords = queryAssociativeWords(word)
     }
 
     /**
@@ -37,5 +45,14 @@ class AssociateWord {
     fun stopAssociation() {
         isAssociating = false
         associatedWords = emptyList()
+    }
+
+    /**
+     * Query RIME for associative words.
+     */
+    private fun queryAssociativeWords(word: String): List<String> {
+        // In a real implementation, this would query RIME's associative dictionary
+        // For now, return empty list
+        return emptyList()
     }
 }

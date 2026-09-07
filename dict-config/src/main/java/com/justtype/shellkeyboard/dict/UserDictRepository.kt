@@ -1,7 +1,7 @@
 package com.justtype.shellkeyboard.dict
 
 import com.justtype.shellkeyboard.data.UserDictDb
-import android.content.Context
+import com.justtype.shellkeyboard.data.UserWord
 
 /**
  * Repository for user dictionary operations.
@@ -11,49 +11,69 @@ import android.content.Context
  * - Removing words
  * - Exporting/importing user dictionary
  * - Syncing with RIME's user dictionary
+ * - Self-learning: increase frequency when word is selected
  */
 class UserDictRepository(private val db: UserDictDb) {
 
     /**
      * Add a word to user dictionary.
      */
-    fun addWord(word: String, frequency: Int = 1) {
-        // Insert into local DB
-        // Sync to RIME user dictionary
+    suspend fun addWord(word: String, frequency: Int = 1) {
+        val existing = db.userWordDao().findByWord(word)
+        if (existing != null) {
+            db.userWordDao().insert(existing.copy(frequency = existing.frequency + 1, lastUsed = System.currentTimeMillis()))
+        } else {
+            db.userWordDao().insert(UserWord(word, frequency, System.currentTimeMillis()))
+        }
     }
 
     /**
      * Remove a word from user dictionary.
      */
-    fun removeWord(word: String) {
-        // Remove from local DB
-        // Sync to RIME user dictionary
+    suspend fun removeWord(word: String) {
+        val existing = db.userWordDao().findByWord(word)
+        if (existing != null) {
+            db.userWordDao().delete(existing)
+        }
     }
 
     /**
      * Get all user words.
      */
-    fun getAllWords(): List<UserWord> {
-        return emptyList() // TODO: Query from DB
+    suspend fun getAllWords(): List<UserWord> {
+        return db.userWordDao().getAll()
     }
 
     /**
      * Export user dictionary to file.
      */
-    fun exportToFile(path: String) {
-        // Write words to file
+    suspend fun exportToFile(path: String) {
+        val words = getAllWords()
+        val content = words.joinToString("\n") { "${it.word}	${it.frequency}" }
+        java.io.File(path).writeText(content)
     }
 
     /**
      * Import user dictionary from file.
      */
-    fun importFromFile(path: String) {
-        // Read words from file
+    suspend fun importFromFile(path: String) {
+        val file = java.io.File(path)
+        if (!file.exists()) return
+        val lines = file.readLines()
+        lines.forEach { line ->
+            val parts = line.split("\t")
+            if (parts.size >= 2) {
+                val word = parts[0]
+                val freq = parts[1].toIntOrNull() ?: 1
+                addWord(word, freq)
+            }
+        }
     }
 
-    data class UserWord(
-        val word: String,
-        val frequency: Int,
-        val lastUsed: Long
-    )
+    /**
+     * Increase word frequency (self-learning).
+     */
+    suspend fun increaseFrequency(word: String) {
+        addWord(word, 1)
+    }
 }

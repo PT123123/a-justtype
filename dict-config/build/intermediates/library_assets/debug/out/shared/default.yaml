@@ -1,0 +1,41 @@
+# RIME default configuration
+# Shell Keyboard
+
+schema_list:
+  - schema: luna_pinyin
+  - schema: wubi86
+  - schema: double_pinyin
+  - schema: cangjie5
+
+switcher:
+  caption: "方案菜单"
+  hotkeys:
+    - "Control+grave"
+    - "F4"
+  save_options:
+    - full_shape
+    - ascii_punct
+    - simplification
+    - extended_charset
+  fold_options: true
+  abbreviate_options: true
+  option_list_separator: ";"
+
+menu:
+  page_size: 5
+
+punctuator:
+  full_shape:
+    " " : { commit: "　" }
+    "<" : { commit: "《" }
+    ">" : { commit: "》" }
+    "/" : { commit: "、" }
+
+ascii_composer:
+  switch_key:
+    Shift_L: inline_ascii
+    Shift_R: commit_text
+    Control_L: noop
+    Control_R: noop
+    Caps_Lock: clear
+    Eisu_toggle: clear

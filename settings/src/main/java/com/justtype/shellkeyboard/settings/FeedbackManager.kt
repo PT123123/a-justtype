@@ -2,7 +2,6 @@ package com.justtype.shellkeyboard.settings
 
 import android.content.Context
 import android.media.AudioManager
-import android.view.KeyEvent
 import android.os.Build
 import android.os.VibrationEffect
 import android.os.Vibrator
@@ -25,9 +24,6 @@ class FeedbackManager(private val context: Context) {
 
     private val audioManager = context.getSystemService(Context.AUDIO_SERVICE) as AudioManager
 
-    /**
-     * Trigger haptic feedback on key press.
-     */
     fun vibrate(durationMs: Long = 20) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             vibrator.vibrate(VibrationEffect.createOneShot(durationMs, VibrationEffect.DEFAULT_AMPLITUDE))
@@ -37,24 +33,15 @@ class FeedbackManager(private val context: Context) {
         }
     }
 
-    /**
-     * Play click sound on key press.
-     */
     fun playClick() {
         audioManager.playSoundEffect(AudioManager.FX_KEYPRESS_STANDARD, 1.0f)
     }
 
-    /**
-     * Check if haptic feedback is enabled.
-     */
     fun isHapticEnabled(): Boolean {
-        return true // TODO: Load from preferences
+        return true
     }
 
-    /**
-     * Check if sound feedback is enabled.
-     */
     fun isSoundEnabled(): Boolean {
-        return true // TODO: Load from preferences
+        return true
     }
 }

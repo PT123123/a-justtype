@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="theme_entries">
+        <item>Light</item>
+        <item>Dark</item>
+        <item>System Default</item>
+    </string-array>
+    <string-array name="theme_values">
+        <item>light</item>
+        <item>dark</item>
+        <item>system</item>
+    </string-array>
+    <string name="pref_category_feedback">Feedback</string>
+    <string name="pref_category_general">General</string>
+    <string name="pref_category_input">Input</string>
+    <string name="pref_category_privacy">Privacy</string>
+    <string name="pref_cloud_sync_summary">Sync user dictionary over LAN</string>
+    <string name="pref_cloud_sync_title">Cloud Sync</string>
+    <string name="pref_haptic_title">Haptic Feedback</string>
+    <string name="pref_keyboard_height_title">Keyboard Height</string>
+    <string name="pref_schema_title">Input Schema</string>
+    <string name="pref_sound_title">Sound Feedback</string>
+    <string name="pref_theme_title">Theme</string>
+    <string name="pref_user_dict_title">User Dictionary</string>
+</resources>

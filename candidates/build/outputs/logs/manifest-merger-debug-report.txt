@@ -1,0 +1,16 @@
+-- Merging decision tree log ---
+manifest
+ADDED from <USER_HOME>\project\a-justtype\candidates\build\intermediates\tmp\ProcessLibraryManifest\debug\tempAndroidManifest9647162514058095557.xml:2:13-83
+INJECTED from <USER_HOME>\project\a-justtype\candidates\build\intermediates\tmp\ProcessLibraryManifest\debug\tempAndroidManifest9647162514058095557.xml:2:13-83
+	package
+		INJECTED from <USER_HOME>\project\a-justtype\candidates\build\intermediates\tmp\ProcessLibraryManifest\debug\tempAndroidManifest9647162514058095557.xml
+	xmlns:android
+		ADDED from <USER_HOME>\project\a-justtype\candidates\build\intermediates\tmp\ProcessLibraryManifest\debug\tempAndroidManifest9647162514058095557.xml:2:23-81
+uses-sdk
+INJECTED from <USER_HOME>\project\a-justtype\candidates\build\intermediates\tmp\ProcessLibraryManifest\debug\tempAndroidManifest9647162514058095557.xml reason: use-sdk injection requested
+INJECTED from <USER_HOME>\project\a-justtype\candidates\build\intermediates\tmp\ProcessLibraryManifest\debug\tempAndroidManifest9647162514058095557.xml
+INJECTED from <USER_HOME>\project\a-justtype\candidates\build\intermediates\tmp\ProcessLibraryManifest\debug\tempAndroidManifest9647162514058095557.xml
+	android:targetSdkVersion
+		INJECTED from <USER_HOME>\project\a-justtype\candidates\build\intermediates\tmp\ProcessLibraryManifest\debug\tempAndroidManifest9647162514058095557.xml
+	android:minSdkVersion
+		INJECTED from <USER_HOME>\project\a-justtype\candidates\build\intermediates\tmp\ProcessLibraryManifest\debug\tempAndroidManifest9647162514058095557.xml

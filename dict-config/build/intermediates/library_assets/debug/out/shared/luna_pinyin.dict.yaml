@@ -1,0 +1,41 @@
+# RIME dictionary: luna_pinyin
+# Simplified Chinese dictionary for luna_pinyin schema
+
+---
+name: luna_pinyin
+version: "0.22"
+sort: by_weight
+use_preset_vocabulary: true
+import_tables:
+  - luna_pinyin.cn_en
+  - luna_pinyin.extended
+...
+
+# Common words (sample)
+的	1000
+一	900
+是	850
+不	800
+了	750
+人	700
+我	650
+在	600
+有	550
+他	500
+这	450
+中	400
+大	350
+来	300
+上	250
+国	200
+个	150
+到	100
+说	90
+们	80
+为	70
+子	60
+和	50
+你	40
+地	30
+出	20
+会	10
