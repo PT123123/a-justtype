@@ -1,26 +1,14 @@
 package com.justtype.shellkeyboard.ime
 
+import android.content.res.Configuration
 import android.inputmethodservice.InputMethodService
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputConnection
-import com.justtype.shellkeyboard.core.Rime
 import com.justtype.shellkeyboard.core.RimeDispatcher
-import com.justtype.shellkeyboard.core.RimeLifecycle
 import com.justtype.shellkeyboard.keyboard.ui.InputView
 import com.justtype.shellkeyboard.keyboard.ui.InputConnectionBridge
-import com.justtype.shellkeyboard.settings.ThemeManager
 
-/**
- * Main IME service for Shell Keyboard.
- * 
- * Lifecycle:
- * - onCreate(): Initialize RIME engine, load config
- * - onCreateInputView(): Build keyboard UI
- * - onStartInputView(): Prepare for input (detect field type)
- * - onFinishInputView(): Cleanup per-input state
- * - onDestroy(): Release RIME engine
- */
 class ShellInputMethodService : InputMethodService() {
 
     private lateinit var rimeDispatcher: RimeDispatcher
@@ -46,7 +34,6 @@ class ShellInputMethodService : InputMethodService() {
         inputView?.onStartInputView(info)
         inputConnectionBridge.currentInputConnection = currentInputConnection
         
-        // Privacy: disable candidate bar for password fields
         val isPasswordField = info?.inputType?.let { type ->
             (type and EditorInfo.TYPE_MASK_CLASS) == EditorInfo.TYPE_CLASS_TEXT &&
             ((type and EditorInfo.TYPE_MASK_VARIATION) == EditorInfo.TYPE_TEXT_VARIATION_PASSWORD ||
@@ -60,6 +47,12 @@ class ShellInputMethodService : InputMethodService() {
     override fun onFinishInputView(finishingInput: Boolean) {
         super.onFinishInputView(finishingInput)
         inputView?.onFinishInputView()
+    }
+    
+    override fun onConfigurationChanged(newConfig: Configuration) {
+        super.onConfigurationChanged(newConfig)
+        val isLandscape = newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE
+        inputView?.setLandscapeMode(isLandscape)
     }
 
     override fun onDestroy() {
