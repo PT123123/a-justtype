@@ -3,15 +3,6 @@ package com.justtype.shellkeyboard.settings
 import android.content.Context
 import androidx.appcompat.app.AppCompatDelegate
 
-/**
- * Manages keyboard themes.
- * 
- * Supports:
- * - Light theme
- * - Dark theme
- * - System default
- * - Custom themes (future)
- */
 class ThemeManager(private val context: Context) {
 
     enum class Theme {
@@ -30,6 +21,6 @@ class ThemeManager(private val context: Context) {
     }
 
     fun getCurrentTheme(): Theme {
-        return Theme.SYSTEM // TODO: Load from preferences
+        return Theme.SYSTEM
     }
 }

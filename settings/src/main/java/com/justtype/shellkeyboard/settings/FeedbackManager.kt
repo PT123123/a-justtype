@@ -6,12 +6,7 @@ import android.os.Build
 import android.os.VibrationEffect
 import android.os.Vibrator
 import android.os.VibratorManager
-import android.view.KeyEvent
-import android.view.inputmethod.InputMethodManager
 
-/**
- * Manages haptic and audio feedback for key presses.
- */
 class FeedbackManager(private val context: Context) {
 
     private val vibrator: Vibrator = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {

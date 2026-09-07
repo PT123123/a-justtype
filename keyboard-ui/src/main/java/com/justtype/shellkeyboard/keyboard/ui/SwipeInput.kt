@@ -3,9 +3,6 @@ package com.justtype.shellkeyboard.keyboard.ui
 import android.graphics.PointF
 import kotlin.math.sqrt
 
-/**
- * Swipe/swype input detection.
- */
 class SwipeInput {
 
     private val points = mutableListOf<PointF>()
@@ -41,10 +38,27 @@ class SwipeInput {
     }
 
     private fun getKeySequence(): List<String> {
-        return emptyList()
+        if (points.size < 2) return emptyList()
+        val keys = mutableListOf<String>()
+        val qwertyRows = listOf(
+            listOf("q", "w", "e", "r", "t", "y", "u", "i", "o", "p"),
+            listOf("a", "s", "d", "f", "g", "h", "j", "k", "l"),
+            listOf("z", "x", "c", "v", "b", "n", "m")
+        )
+        val keyWidth = 100f
+        val rowHeight = 100f
+        for (point in points) {
+            val row = (point.y / rowHeight).toInt().coerceIn(0, qwertyRows.size - 1)
+            val col = (point.x / keyWidth).toInt().coerceIn(0, qwertyRows[row].size - 1)
+            keys.add(qwertyRows[row][col])
+        }
+        return keys.distinct()
     }
 
     private fun matchWord(keySequence: List<String>): String? {
-        return null
+        if (keySequence.isEmpty()) return null
+        val word = keySequence.joinToString("")
+        val commonWords = listOf("the", "and", "for", "are", "but", "not", "you", "all", "can", "had", "her", "was", "one", "our", "out", "day", "get", "has", "him", "his", "how", "its", "may", "new", "now", "old", "see", "two", "way", "who", "boy", "did", "own", "say", "she", "too", "use", "word", "work", "with", "this", "that", "from", "they", "been", "have", "some", "what", "when", "make", "like", "just", "take", "come", "could", "would", "should", "there", "their", "where", "which", "about")
+        return commonWords.find { it.startsWith(word) && it.length <= word.length + 2 }
     }
 }
