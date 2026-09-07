@@ -1,1 +1,0 @@
-const fs=require("fs");const path=require("path");function wf(p,c){fs.mkdirSync(path.dirname(p),{recursive:true});fs.writeFileSync(p,c,"utf-8");console.log("OK "+p)}const UI="/mnt/c<USER_HOME>/project/a-justtype/keyboard-ui/src/main/java/com/justtype/shellkeyboard/keyboard/ui/";

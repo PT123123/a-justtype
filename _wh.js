@@ -1,1 +1,0 @@
-const fs=require("fs");const path=require("path");function wf(p,b64){fs.mkdirSync(path.dirname(p),{recursive:true});fs.writeFileSync(p,Buffer.from(b64,"base64"));console.log("OK "+p)}
