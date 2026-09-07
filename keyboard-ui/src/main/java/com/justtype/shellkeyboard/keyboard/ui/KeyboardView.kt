@@ -20,7 +20,13 @@ class KeyboardView(
     private val inputConnectionBridge: InputConnectionBridge
 ) {
     val view: View
-    private val keyActionListener = KeyActionListener(rimeDispatcher, inputConnectionBridge)
+    private val vimMode = VimMode(inputConnectionBridge)
+    private val bracketPair = BracketPair(inputConnectionBridge)
+    private val markdownShortcuts = MarkdownShortcuts(inputConnectionBridge)
+    private val keyActionListener = KeyActionListener(rimeDispatcher, inputConnectionBridge, vimMode, bracketPair, markdownShortcuts)
+    private val popupDelegate = PopupDelegate(context)
+    private val swipeInput = SwipeInput()
+    private val textSelection = TextSelection(inputConnectionBridge)
     private var isPasswordMode = false
     private var currentKeyboardType = KeyboardType.QWERTY
     private val keyMargin = 4f
@@ -97,7 +103,7 @@ class KeyboardView(
     }
 
     private fun buildSymbolKeys() {
-        listOf("1","2","3","4","5","6","7","8","9","0","!","@","#","$","%","^","&","*","(",")","{","}","[","]","<",">","=","+","-","_").forEach {
+        listOf("1","2","3","4","5","6","7","8","9","0","!","@","#","$","%","^","&","*","(",")","-","_","=","+","[","]","{","}","|","\\","/","?",":",";","<",">",",",".","'").forEach {
             keys.add(KeyInfo(it, it.first().code, KeyType.CHARACTER))
         }
         keys.add(KeyInfo("ABC", -1, KeyType.FUNCTION, 1.5f))
@@ -106,13 +112,14 @@ class KeyboardView(
     }
 
     private fun buildNumpadKeys() {
-        listOf("7","8","9","4","5","6","1","2","3","0").forEach { keys.add(KeyInfo(it, it.first().code, KeyType.CHARACTER)) }
-        keys.add(KeyInfo(".", KeyEvent.KEYCODE_PERIOD, KeyType.CHARACTER))
+        listOf("1","2","3","4","5","6","7","8","9","0","+","-","*","/","=","(",")","<",">",".",",").forEach {
+            keys.add(KeyInfo(it, it.first().code, KeyType.CHARACTER))
+        }
         keys.add(KeyInfo("⌫", KeyEvent.KEYCODE_DEL, KeyType.FUNCTION))
     }
 
     private fun buildProgrammerKeys() {
-        listOf("{","}","[","]","(",")","<",">","=","!","&","|","+","-","*","/",";","\"","'","\\","~","`","#").forEach {
+        listOf("{","}","[","]","(",")","<",">","=","!","&","|","+","-","*","/",";","'","\\","~ ","`","#","$","%","^","_","@","?").forEach {
             keys.add(KeyInfo(it, it.first().code, KeyType.CHARACTER))
         }
         keys.add(KeyInfo("ABC", -1, KeyType.FUNCTION, 1.5f))
@@ -171,6 +178,7 @@ class KeyboardView(
         val key = findKeyAt(x, y)
         if (key != null) {
             pressedKeys.add(key.code)
+            swipeInput.startSwipe(x, y)
             showPopup(key)
             view.invalidate()
         }
@@ -181,6 +189,7 @@ class KeyboardView(
         val key = findKeyAt(x, y)
         if (key != null) {
             pressedKeys.remove(key.code)
+            swipeInput.endSwipe()
             keyActionListener.onKeyPress(key.code)
             view.invalidate()
         }
@@ -190,6 +199,7 @@ class KeyboardView(
 
     private fun handleTouchMove(x: Float, y: Float) {
         hidePopup()
+        swipeInput.addPoint(x, y)
     }
 
     private fun showPopup(key: KeyInfo) {
@@ -218,4 +228,7 @@ class KeyboardView(
     fun onFinishInput() { pressedKeys.clear(); view.invalidate() }
     fun setPasswordMode(isPassword: Boolean) { isPasswordMode = isPassword }
     fun switchKeyboardType(type: KeyboardType) { currentKeyboardType = type; buildKeys(); view.invalidate() }
+    fun getVimMode(): VimMode = vimMode
+    fun getTextSelection(): TextSelection = textSelection
+    fun getClipboardManager(): ClipboardManager = ClipboardManager(context)
 }

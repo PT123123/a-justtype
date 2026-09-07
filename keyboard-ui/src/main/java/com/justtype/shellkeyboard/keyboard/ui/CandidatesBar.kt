@@ -8,19 +8,17 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import android.view.inputmethod.EditorInfo
 
-/**
- * Horizontal scrolling candidate bar.
- * 
- * Displays RIME candidates with:
- * - Page navigation (prev/next)
- * - Candidate selection
- * - Gesture support (swipe to select)
- */
 class CandidatesBar(private val context: Context) {
     val view: View
     private val scrollView: HorizontalScrollView
     private val container: LinearLayout
     private var isPasswordMode = false
+    private var candidates = listOf<String>()
+    private var highlightedIndex = 0
+    
+    var onCandidateSelected: ((Int) -> Unit)? = null
+    var onNextPage: (() -> Unit)? = null
+    var onPrevPage: (() -> Unit)? = null
 
     init {
         scrollView = HorizontalScrollView(context).apply {
@@ -34,27 +32,53 @@ class CandidatesBar(private val context: Context) {
         view = scrollView
     }
 
-    fun updateCandidates(candidates: List<String>, highlightedIndex: Int = 0) {
+    fun updateCandidates(candidates: List<String>, highlightedIndex: Int = 0, pageInfo: String = "") {
         if (isPasswordMode) {
             view.visibility = View.GONE
             return
         }
         view.visibility = View.VISIBLE
+        this.candidates = candidates
+        this.highlightedIndex = highlightedIndex
         container.removeAllViews()
+        
+        if (pageInfo.isNotEmpty()) {
+            val prevBtn = TextView(context).apply {
+                text = "<"
+                textSize = 16f
+                setPadding(24, 16, 24, 16)
+                setOnClickListener { onPrevPage?.invoke() }
+            }
+            container.addView(prevBtn)
+        }
         
         candidates.forEachIndexed { index, candidate ->
             val tv = TextView(context).apply {
                 text = candidate
                 textSize = 18f
                 setPadding(32, 16, 32, 16)
-                setOnClickListener { onCandidateSelected(index) }
+                if (index == highlightedIndex) {
+                    setBackgroundColor(0xFF6750A4.toInt())
+                    setTextColor(0xFFFFFFFF.toInt())
+                }
+                setOnClickListener { onCandidateSelected?.invoke(index) }
             }
             container.addView(tv)
+        }
+        
+        if (pageInfo.isNotEmpty()) {
+            val nextBtn = TextView(context).apply {
+                text = ">"
+                textSize = 16f
+                setPadding(24, 16, 24, 16)
+                setOnClickListener { onNextPage?.invoke() }
+            }
+            container.addView(nextBtn)
         }
     }
 
     fun onStartInput(info: EditorInfo?) {
-        // Reset state
+        container.removeAllViews()
     }
 
     fun onFinishInput() {
@@ -65,8 +89,7 @@ class CandidatesBar(private val context: Context) {
         isPasswordMode = isPassword
         view.visibility = if (isPassword) View.GONE else View.VISIBLE
     }
-
-    private fun onCandidateSelected(index: Int) {
-        // Commit selected candidate
-    }
+    
+    fun getCurrentCandidates(): List<String> = candidates
+    fun getHighlightedIndex(): Int = highlightedIndex
 }
